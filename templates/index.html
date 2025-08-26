@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Homepage
+{% endblock %}
+
+{% block main %}
+
+    <h1>Homepage</h1>
+
+    <div class="container mt-4 pt-3">
+        <table class="table mt-4">
+            <thead>
+                <tr>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Shares</th>
+                    <th scope="col">Total</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                {% for transaction in transactions %}
+                    <tr class="table-light">
+                        <td>{{ transaction.stock }}</td>
+                        <td>{{ transaction.stock_price | usd }}</td>
+                        <td>{{ transaction.shares }}</td>
+                        <td>{{ transaction.stock_value| usd  }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot class="table-group-divider">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <th scoope="row">Cash</th>
+                    <td>{{ user_cash | usd }}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <th scoope="row">Total</th>
+                    <td>{{ total_value | usd }}</td>
+                </tr>
+            </tfoot >
+        </table>
+    </div>
+
+{% endblock %}
