@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+
+    <h2>History</h2>
+
+    <div class="container mt-4 pt-3">
+        <table class="table mt-4">
+            <thead>
+                <tr>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Shares</th>
+                    <th scope="col">Date</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                {% for row in transactions %}
+                    <tr class="table-light">
+                        <td>{{ row.stock }}</td>
+                        <td>{{ row.price | usd }}</td>
+                        <td>{{ row.shares }}</td>
+                        <td>{{ row.date.strftime("%m-%d-%Y %H:%M:%S") }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
