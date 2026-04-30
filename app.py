@@ -23,7 +23,7 @@ app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 # Configure session to use filesystem (instead of signed cookies)
 app.config['SESSION_TYPE'] = 'filesystem'
 app.config['SESSION_PERMANENT'] = False
-app.config['SESSION_COOKIE_SECURE'] = False
+app.config['SESSION_COOKIE_SECURE'] = os.getenv('SESSION_COOKIE_SECURE', '0') == '1'
 app.config['SESSION_COOKIE_HTTPONLY'] = True
 app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'  
 Session(app)
@@ -38,7 +38,10 @@ def after_request(response):
 
 # Configure database with SQLAlchemy
 basedir = os.path.abspath(os.path.dirname(__file__))
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'finance.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = (
+    os.getenv('DATABASE_URL')
+    or 'sqlite:///' + os.path.join(basedir, 'finance.db')
+)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
