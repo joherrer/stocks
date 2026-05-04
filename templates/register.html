@@ -7,6 +7,7 @@
 {% block main %}
 
     <form action="/register" method="post">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <div class="mb-3">
             <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="username" placeholder="Username" type="text" required>
         </div>
@@ -18,5 +19,5 @@
         </div>
         <button class="btn btn-primary" type="submit">Register</button>
     </form>
-    
+
 {% endblock %}

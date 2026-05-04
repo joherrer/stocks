@@ -24,7 +24,7 @@
                         <td>{{ transaction.stock }}</td>
                         <td>{{ transaction.stock_price | usd }}</td>
                         <td>{{ transaction.shares }}</td>
-                        <td>{{ transaction.stock_value| usd  }}</td>
+                        <td>{{ transaction.stock_value | usd }}</td>
                     </tr>
                 {% endfor %}
             </tbody>
@@ -32,16 +32,16 @@
                 <tr>
                     <td></td>
                     <td></td>
-                    <th scoope="row">Cash</th>
+                    <th scope="row">Cash</th>
                     <td>{{ user_cash | usd }}</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td></td>
-                    <th scoope="row">Total</th>
+                    <th scope="row">Total</th>
                     <td>{{ total_value | usd }}</td>
                 </tr>
-            </tfoot >
+            </tfoot>
         </table>
     </div>
 

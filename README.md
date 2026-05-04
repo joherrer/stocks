@@ -9,7 +9,7 @@
 Stocks is a web application built using Python and Flask that allows users to manage and track simulated stock investments. Users can buy, sell, and view their transaction history, check current stock prices, and manage their cash balance.
 
 ## ✨ Features
-- Portfolio with current stock holdings. 
+- Portfolio with current stock holdings.
 - Purchase and sell simulated stocks.
 - Check real-time prices of any stock.
 - View a history of all your stock transactions.
@@ -18,12 +18,12 @@ Stocks is a web application built using Python and Flask that allows users to ma
 
 ## 🖥️ Usage
 1. Register a new account or log in if you already have one.
-2. Home – View your portfolio: stocks, values, and total balance.  
-3. Quote – Enter a stock symbol to see its current price.  
-4. Buy – Enter a stock symbol and number of shares to purchase; your cash balance updates automatically.  
-5. Sell – Select a stock and number of shares to sell; balance updates instantly.  
+2. Home – View your portfolio: stocks, values, and total balance.
+3. Quote – Enter a stock symbol to see its current price.
+4. Buy – Enter a stock symbol and number of shares to purchase; your cash balance updates automatically.
+5. Sell – Select a stock and number of shares to sell; balance updates instantly.
 6. History – See all past transactions.
-  
+
 ## 🛠️ Development Setup
 
 ### Prerequisites
@@ -62,25 +62,36 @@ Stocks is a web application built using Python and Flask that allows users to ma
     # Windows
     venv\Scripts\activate
     ```
-    
+
 5. Install the required packages:
 
     ```bash
     pip install -r requirements.txt
     ```
 
-6. Start the Flask application:
+6. Create a `.env` file:
+
+    ```bash
+    SECRET_KEY=replace-with-a-long-random-value
+    SESSION_COOKIE_SECURE=0
+    ```
+
+    Set `SESSION_COOKIE_SECURE=1` in production when the app is served over HTTPS.
+
+7. Start the Flask application:
 
     ```bash
     flask run
     ```
 
-7. Open your browser and go to `http://127.0.0.1:5000`.
+8. Open your browser and go to `http://127.0.0.1:5000`.
 
 ## 🗒️ Notes
 - This app uses SQLite as the database system and SQLAlchemy as the ORM to manage users, transactions, and stock data.
 
 - The app uses Flask-Session for session management and Werkzeug for secure password hashing and user authentication.
+
+- Forms are protected with Flask-WTF CSRF protection.
 
 - The stock price data is fetched from an external API (Yahoo Finance).
 
